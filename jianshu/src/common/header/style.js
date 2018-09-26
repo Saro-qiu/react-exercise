@@ -84,6 +84,7 @@ export const SearchInfoTitle=styled.div`
 export const SearchInfoSwitch=styled.div`
     float:right;
     font-size:13px;
+    cursor:pointer;
     .spin{
         display:block;
         float:left;
@@ -91,6 +92,7 @@ export const SearchInfoSwitch=styled.div`
         margin-right:2px;
         transition:all .2s ease-in;
         transform-prigin:center center;
+        
     }
 `
 

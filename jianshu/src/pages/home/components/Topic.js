@@ -1,4 +1,5 @@
 import React,{Component} from 'react';
+import { connect } from 'react-redux';
 import {
     TopicWrapper,
     TopicItem,
@@ -10,38 +11,26 @@ class Topic extends Component{
     render(){
         return (
            <TopicWrapper>
-               <TopicItem>
-                   <img className="topic-img" src="//upload.jianshu.io/collections/images/21/20120316041115481.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/64/h/64" />
-                   简书电影
-               </TopicItem>
-               <TopicItem>
-                   <img className="topic-img" src="//upload.jianshu.io/collections/images/21/20120316041115481.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/64/h/64" />
-                   简书电影
-               </TopicItem>
-               <TopicItem>
-                   <img className="topic-img" src="//upload.jianshu.io/collections/images/21/20120316041115481.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/64/h/64" />
-                   简书电影
-               </TopicItem>
-               <TopicItem>
-                   <img className="topic-img" src="//upload.jianshu.io/collections/images/21/20120316041115481.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/64/h/64" />
-                   简书电影
-               </TopicItem>
-               <TopicItem>
-                   <img className="topic-img" src="//upload.jianshu.io/collections/images/21/20120316041115481.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/64/h/64" />
-                   简书电影
-               </TopicItem>
-               <TopicItem>
-                   <img className="topic-img" src="//upload.jianshu.io/collections/images/21/20120316041115481.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/64/h/64" />
-                   简书电影
-               </TopicItem>
-               <TopicItem>
-                   <img className="topic-img" src="//upload.jianshu.io/collections/images/21/20120316041115481.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/64/h/64" />
-                   简书电影
-               </TopicItem>
+               {
+                   this.props.topicList.map((item)=>{
+                       return (
+                            <TopicItem key={item.get("id")}>
+                                <img className="topic-img" src={item.get("imgUrl")} />
+                                {item.get("title")}
+                            </TopicItem>
+                       )
+                   })
+               }
                 <TopicMore>更多热门专题 ></TopicMore>
            </TopicWrapper>
         )
     }
 }
 
-export default Topic;
+const mapState=(state)=>{
+    return {
+        topicList:state.getIn(["home","topicList"])
+    }
+}
+
+export default connect(mapState)(Topic);
