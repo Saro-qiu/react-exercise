@@ -26,6 +26,8 @@ injectGlobal`
   footer, header, hgroup, menu, nav, section {
     display: block;
   }
+
+
   body {
     line-height: 1;
   }
@@ -43,5 +45,8 @@ injectGlobal`
   table {
     border-collapse: collapse;
     border-spacing: 0;
+  }
+  a{
+    cursor:pointer;
   }
 `

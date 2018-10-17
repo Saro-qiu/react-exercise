@@ -1,30 +1,33 @@
-import React,{Component} from 'react';
+import React,{PureComponent} from 'react';
 import { connect } from 'react-redux';
+import {Link} from 'react-router-dom';
 import {
     ListItem,
     ListInfo,
     LoadMore
 } from '../style';
 import {actionCreators} from '../store';
-class List extends Component{
+class List extends PureComponent{
     render(){
-        const {articalList,getList} = this.props;
+        const {articalList,getList,articalPage} = this.props;
         return (
             <div>
             {
                 articalList.map((item,index)=>{
                     return (
-                    <ListItem key={index}>
-                        <img className="pic" src={item.get("imgUrl")} />
-                        <ListInfo>
-                            <h3>{item.get("title")}</h3>
-                            <p>{item.get("desc")}</p>
-                        </ListInfo>
-                    </ListItem>
+                    <Link key={index} to={'/detail/'+item.get("id")} >
+                        <ListItem>
+                            <img alt="" className="pic" src={item.get("imgUrl")} />
+                            <ListInfo>
+                                <h3>{item.get("title")}</h3>
+                                <p>{item.get("desc")}</p>
+                            </ListInfo>
+                        </ListItem>
+                    </Link>
                     )
                 })
             }
-            <LoadMore onClick={getList}>加载更多</LoadMore>
+            <LoadMore onClick={()=>getList(articalPage)}>加载更多</LoadMore>
             </div>
         )
     }
@@ -32,14 +35,15 @@ class List extends Component{
 
 const mapState=(state)=>{
     return {
-        articalList:state.getIn(["home","articalList"])
+        articalList:state.getIn(["home","articalList"]),
+        articalPage:state.getIn(["home","articalPage"]),
     }
 }
 
 const mapDispatch=(dispatch)=>{
     return {
-        getList(){
-            dispatch(actionCreators.getMoreList())
+        getList(articalPage){
+            dispatch(actionCreators.getMoreList(articalPage))
         }
     }
 }

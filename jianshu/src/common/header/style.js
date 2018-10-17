@@ -5,7 +5,7 @@ export const HeaderWrapper=styled.div`
     height:58px;
     border-bottom:1px solid #f0f0f0;
 `
-export const Login = styled.a`
+export const Logo = styled.div`
     position:absolute;
     top:0;
     left:0px;
@@ -16,7 +16,8 @@ export const Login = styled.a`
 `   
 
 export const Nav = styled.div`
-    width:960px;
+    width:70%;
+    max-width:960px;
     padding-right:50px;
     box-sizing:border-box;
     height:100%;

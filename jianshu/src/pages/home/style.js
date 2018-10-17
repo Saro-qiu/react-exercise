@@ -88,6 +88,7 @@ export const ListInfo = styled.div`
         font-weight: 700;
         line-height: 1.5;
         margin: -7px 0 4px;
+        color:#333;
     }
     p{
         margin: 0 0 8px;
@@ -201,4 +202,19 @@ export const WriteItemBtn = styled.a`
         font-size:12px;
         margin-right:2px;
     }
+`
+
+export const BackTop = styled.a`
+    display:block;
+    width:60px;
+    height:60px;
+    line-height:60px;
+    border-radius:50%;
+    border:1px solid #ccc;
+    text-align:center;
+    position:fixed;
+    right:100px;
+    bottom:100px;
+    color:#333;
+    font-size:12px;
 `

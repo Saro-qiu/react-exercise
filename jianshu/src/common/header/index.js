@@ -1,10 +1,11 @@
 import React,{Component} from 'react';
 import { connect } from 'react-redux';
+import {Link} from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
 import {actionCreators} from './store';
 import {
     HeaderWrapper,
-    Login,
+    Logo,
     Nav,
     NavItem,
     SearchInfo,
@@ -61,11 +62,15 @@ class Header extends Component{
         return(
             
         <HeaderWrapper>
-            <Login href="#" />
+            <Link to="/">
+                <Logo />
+            </Link>
             <Nav>
                 <NavItem className="left active">首页</NavItem>
                 <NavItem className="left">下载App</NavItem>
-                <NavItem className="right">登录</NavItem>
+                <Link to="/login">
+                    <NavItem className="right">登录</NavItem>
+                </Link>
                 <NavItem className="right">
                     <i className="iconfont">&#xe607;</i>
                 </NavItem>

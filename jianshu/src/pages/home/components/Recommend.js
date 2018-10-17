@@ -1,4 +1,4 @@
-import React,{Component} from 'react';
+import React,{PureComponent} from 'react';
 import { connect } from 'react-redux';
 import {
     RecommendWrapper,
@@ -8,7 +8,7 @@ import {
     ShowCode
 } from '../style';
 
-class Recommend extends Component{
+class Recommend extends PureComponent{
     constructor(props){
         super(props);
         this.state={
@@ -35,7 +35,7 @@ class Recommend extends Component{
     getCode(){
         return(
             <ShowCode>
-                <img src="//cdn2.jianshu.io/assets/web/download-index-side-qrcode-cb13fc9106a478795f8d10f9f632fccf.png" />
+                <img alt="" src="//cdn2.jianshu.io/assets/web/download-index-side-qrcode-cb13fc9106a478795f8d10f9f632fccf.png" />
             </ShowCode>
         )
     }
@@ -53,7 +53,7 @@ class Recommend extends Component{
                     })
                 }
                 <Code onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}>
-                    <img className="leftImg" src="//cdn2.jianshu.io/assets/web/download-index-side-qrcode-cb13fc9106a478795f8d10f9f632fccf.png" />
+                    <img alt="" className="leftImg" src="//cdn2.jianshu.io/assets/web/download-index-side-qrcode-cb13fc9106a478795f8d10f9f632fccf.png" />
                     <CodeRight>
                         <h4>下载简书手机App<i className="iconfont">&#xe600;</i></h4>
                         <p>随时随地发现和创作内容</p>

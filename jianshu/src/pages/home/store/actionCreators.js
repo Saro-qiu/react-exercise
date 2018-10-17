@@ -10,9 +10,10 @@ const changeHome=(result)=>({
 })
 
 
-const getMore=(result)=>({
+const getMore=(result,newPage)=>({
     type:constants.GET_LIST_MORE,
-    topicList:fromJS(result)
+    topicList:fromJS(result),
+    articalPage:newPage
 })
 
 export const changeHomeData=()=>{
@@ -27,13 +28,19 @@ export const changeHomeData=()=>{
     
 }
 
-export const getMoreList=()=>{
+export const getMoreList=(page)=>{
     return (dispatch)=>{
-        axios.get('/api/homeList.json').then((res)=>{
+        axios.get('/api/homeList.json?page='+page).then((res)=>{
             const result=res.data.data;
-            dispatch(getMore(result));
+            const newPage=page+1;
+            dispatch(getMore(result,newPage));
         }).catch((res)=>{
             console.log("fail111");
         })
     }
 }
+
+export const changeShowScroll=(status)=>({
+    type:constants.CHANGE_SCROLL,
+    showScroll:status
+})

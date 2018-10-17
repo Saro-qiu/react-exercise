@@ -4,7 +4,9 @@ import * as constants from './constants';
 const defaultState = fromJS({
     topicList:[],
     articalList:[],
-    recommendList:[]
+    recommendList:[],
+    articalPage:1,
+    showScroll:false
 });
 
 export default (state = defaultState,action)=>{
@@ -16,7 +18,12 @@ export default (state = defaultState,action)=>{
                 articalList:fromJS(action.articalList)
             });
         case constants.GET_LIST_MORE:
-            return state.merge({articalList:state.get('articalList').concat(action.topicList)});
+            return state.merge({
+                articalList:state.get('articalList').concat(action.topicList),
+                articalPage:action.articalPage
+            });
+        case constants.CHANGE_SCROLL:
+            return state.merge({'showScroll':action.showScroll});
         default:
             return state;
     }
